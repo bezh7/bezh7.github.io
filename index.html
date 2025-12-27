@@ -1,166 +1,63 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Portfolio</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <title>Ben Zhang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-    <div id="mobile-menu-open" class="shadow-large">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-    </div>
-    <!-- End #mobile-menu-toggle -->
-    <header>
-        <div id="mobile-menu-close">
-            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
+    <main class="terminal">
+        <div class="line" data-command="whoami">
+            <span class="prompt">$</span>
+            <span class="command"></span>
+            <div class="output">ben zhang</div>
         </div>
-        <ul id="menu" class="shadow">
-            <li>
-                <a href="#about">About</a>
-            </li>
-            <li>
-                <a href="#experience">Experience</a>
-            </li>
-            <li>
-                <a href="#projects">Projects</a>
-            </li>
-        </ul>
-    </header>
-    <!-- End header -->
 
-    <div id="lead">
-        <div id="lead-content">
-            <h1>Ben Zhang</h1>
-            <h2>Student Entreprenuer</h2>
-            <a href="/resume.pdf" download="resume.pdf" class="btn-rounded-white">Download Resume</a>
+        <div class="line" data-command="cat about.txt">
+            <span class="prompt">$</span>
+            <span class="command"></span>
+            <div class="output">upenn m&t '29<br>building and writing about whatever i think is cool. currently interested in ai, infra, and mcp.</div>
         </div>
-        <!-- End #lead-content -->
 
-        <div id="lead-overlay"></div>
-
-        <div id="lead-down">
-            <span>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </span>
-        </div>
-        <!-- End #lead-down -->
-    </div>
-    <!-- End #lead -->
-
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2 class="heading">About Me</h2>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                        I'm a freshman at the University of Pennsylvania's Jerome Fisher Managment and Technology Program passionate about high tech entreprenuership.
-
-			My goal is to bridge the gaps between deep tech and the markets, combining an interdisciplinary philosophy in engineering and business.
-                    </p>
-                </div>
+        <div class="line" data-command="ls -la projects/">
+            <span class="prompt">$</span>
+            <span class="command"></span>
+            <div class="output">
+                <ul class="project-list">
+                    <li>
+                        <a href="https://github.com/bezh7/data-labeling-mvp">unnamed app</a>
+                        <span class="desc">half finished ai agent for data processing. side project</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/bezh7/metadata-optimizer">chatgpt app invocation simulator</a>
+                        <span class="desc">script i made to test chatgpt app invocations. interested in expanding for mcp tool invcoation optimizing</span>
+                    </li>
+                    <li>
+                        <a href="https://devpost.com/software/team-3-loople">loople</a>
+                        <span class="desc">resusable led bracelet for parties and concerts. m&tsi 24</span>
+                    </li>
+                    <li>
+                        <a href="https://xplorestaging.ieee.org/document/10881418">kam-research</a>
+                        <span class="desc">knee adduction moment monitoring method using artificial neural networks</span>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
-    <!-- End #about -->
 
-    <div id="experience" class="background-alt">
-        <h2 class="heading">Experience</h2>
-        <div id="experience-timeline">
-	    <div data-date="September 2023 – Present">
-                <h3>SmartSeat</h3>
-                <h4>CEO</h4>
-                <p>
-                    Led independent team to develop MedTech startup. Read research papers, prototyped, and peformed feasibility tests of product. Performed premarket research, wrote grants, and wrote business plans. Gained experience working with smart materials and pressure sensing systems. 
-                </p>
-            </div>
-            <div data-date="August 2024 – Present">
-                <h3>Northwestern University</h3>
-                <h4>Research Intern</h4>
-                <p>
-                    Performed research on knee adduction moment monitoring methods using artificial neural networks for prevention of knee osteoarthritis. Gained experience with data processing and neural networks.  <a href="/BenConferencePaper.pdf" download="BenConferencePaper.pdf" > IEEE DSIT2024 Conference, Nanjing, China, 2024</a>
-                </p>
+        <div class="line" data-command="cat links.txt">
+            <span class="prompt">$</span>
+            <span class="command"></span>
+            <div class="output link-list">
+                <a href="https://substack.com/@benzhnng?" target="_blank">substack</a>
+                <a href="https://www.linkedin.com/in/benjamin-zhang-248397292/" target="_blank">linkedin</a>
             </div>
         </div>
-    </div>
-    <!-- End #experience -->
+    </main>
 
-    <div id="projects" class="background-alt">
-        <h2 class="heading">Projects</h2>
-        <div class="container">
-            <div class="row">
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/smartseatlogo.png" />
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>SmartSeat</h3>
-                        <p>
-                            SmartSeat is a therapeutic stiffness adjusting seat cushion for back pain and pressure ulcer prevention. Featured in <a href="https://www.chicagotribune.com/2024/06/07/team-of-naperville-students-take-home-top-prize-in-international-space-center-houston-competition/">the Chicago Tribune</a> and <a href="https://napervillemagazine.com/bright-ideas-2/">Naperville Magazine</a>.
-                        </p>
-                        <a href="https://www.youtube.com/watch?v=W9qsrMCN50k">View Project</a>
-                    </div>
-                    <!-- End .project-info -->
-                </div>
-                <!-- End .project -->
-
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/looplelogo" />
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>Loople</h3>
-                        <p>
-                            A reusable and multipurpose custom LED bracelet my team and I created at M&TSI at the University of Pennslyvania. Check out our DevPost for more information!
-                        </p>
-                        <a href="https://devpost.com/software/team-3-loople">View Project</a>
-                    </div>
-                    <!-- End .project-info -->
-                </div>
-                <!-- End .project -->
-            </div>
-        </div>
-    </div>
-    <!-- End #projects -->
-    <!-- End #contact -->
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-5 copyright">
-                </div>
-                <div class="col-sm-2 top">
-                    <span id="to-top">
-                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div class="col-sm-5 social">
-                    <ul>
-                        <li>
-                            <a href="https://www.linkedin.com/in/benjamin-zhang-248397292/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- End footer -->
-    <!-- End footer -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/scripts.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
-
 </html>
