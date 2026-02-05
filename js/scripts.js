@@ -21,6 +21,15 @@
             deskScene.classList.add('active');
             createDustParticles();
 
+            // On mobile, scroll to center of the image
+            if (window.innerWidth <= 768) {
+                const scrollWidth = document.body.scrollWidth - window.innerWidth;
+                if (scrollWidth > 0) {
+                    document.body.scrollLeft = scrollWidth / 2;
+                    document.documentElement.scrollLeft = scrollWidth / 2;
+                }
+            }
+
             // Enable interactions after entrance animations complete
             setTimeout(() => {
                 deskScene.classList.add('interactive');
