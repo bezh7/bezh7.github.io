@@ -942,11 +942,27 @@ body.blob-active .now-playing a {
 @media (max-width: 768px) {
     body {
         align-items: flex-start;
-        padding-top: 20px;
+        padding-top: 0;
+        overflow: auto;
     }
 
     .desk-scene {
-        max-width: 100%;
+        max-width: none;
+        width: 180vw;
+        height: 100vh;
+        overflow: visible;
+    }
+
+    .desk-photo {
+        width: 180vw;
+        min-width: 180vw;
+        object-position: center;
+    }
+
+    /* Modal close button - move to avoid overlap with age display */
+    .modal-close {
+        top: 12px;
+        right: 12px;
     }
 
     .mini-site {
@@ -996,17 +1012,37 @@ body.blob-active .now-playing a {
 }
 
 @media (max-width: 480px) {
+    .desk-scene {
+        width: 220vw;
+    }
+
+    .desk-photo {
+        width: 220vw;
+        min-width: 220vw;
+    }
+
     .mini-site {
         font-size: 1.8vw;
     }
 
     .modal-content {
         padding: 20px;
+        padding-top: 40px;
         border-radius: 16px;
+    }
+
+    .modal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
     }
 
     .modal-header h1 {
         font-size: 1.5rem;
+    }
+
+    .age-display {
+        font-size: 0.9rem;
     }
 
     /* Info panel - compact on mobile */
