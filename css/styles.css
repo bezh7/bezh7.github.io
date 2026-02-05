@@ -938,8 +938,8 @@ body.blob-active .now-playing a {
     color: var(--modal-bg);
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+/* Mobile Responsive - Portrait (horizontal scroll) */
+@media (max-width: 768px) and (orientation: portrait) {
     body {
         align-items: flex-start;
         padding-top: 0;
@@ -959,7 +959,30 @@ body.blob-active .now-playing a {
         height: 100vh;
         object-fit: contain;
     }
+}
 
+/* Mobile Responsive - Landscape (cover to fill screen) */
+@media (max-width: 932px) and (orientation: landscape) {
+    body {
+        overflow: hidden;
+    }
+
+    .desk-scene {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .desk-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+/* Mobile Responsive - Shared styles */
+@media (max-width: 768px) {
     /* Modal close button - move to avoid overlap with age display */
     .modal-close {
         top: 12px;
