@@ -6,57 +6,178 @@
     <title>Ben Zhang</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <main class="terminal">
-        <div class="line" data-command="whoami">
-            <span class="prompt">$</span>
-            <span class="command"></span>
-            <div class="output">ben zhang</div>
+    <!-- Landing Screen -->
+    <div class="landing" id="landing">
+        <div class="landing-content">
+            <h1 class="landing-name">Ben Zhang</h1>
+            <p class="landing-tagline">solve real problems</p>
+            <button class="landing-enter" id="enter-btn">
+                <span>enter my workspace</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="landing-hint">press enter or click to continue</div>
+    </div>
+
+    <!-- Dust particles container -->
+    <div class="dust-container" id="dust-container"></div>
+
+    <!-- Lamp light glow effect -->
+    <div class="lamp-glow"></div>
+
+    <!-- Vignette overlay -->
+    <div class="vignette"></div>
+
+    <!-- Discovery counter -->
+    <div class="discovery-counter" id="discovery-counter">
+        <span class="discovery-icon">✦</span>
+        <span class="discovery-text"><span id="discovery-count">0</span>/4 discovered</span>
+    </div>
+
+    <!-- Info panel (bottom-left) -->
+    <div class="info-panel" id="info-panel">
+        <div class="info-clock">
+            <span class="clock-dot"></span>
+            <span class="clock-time" id="panel-clock"></span>
+        </div>
+        <div class="info-status" id="info-status">probably coding...</div>
+    </div>
+
+    <div class="desk-scene" id="desk-scene">
+        <!-- Blank background (replace with blank version when ready) -->
+        <img src="images/desk.png" class="desk-photo" alt="Illustrated desk">
+
+        <!-- Item overlays - positioned over blank spots in background -->
+        <div class="desk-item laptop" data-modal="computer">
+            <img src="images/laptop.png" alt="Laptop" class="item-image">
+            <div class="item-label">
+                <svg class="item-arrow" width="70" height="50" viewBox="-5 -5 70 50">
+                    <path d="M 30 5 Q 35 20, 30 35" />
+                </svg>
+                <span class="item-text">click to explore</span>
+            </div>
         </div>
 
-        <div class="line" data-command="cat about.txt">
-            <span class="prompt">$</span>
-            <span class="command"></span>
-            <div class="output">upenn m&t '29<br>building and writing about whatever i think is cool. currently interested in ai, infra, and mcp.</div>
+        <div class="desk-item headphones" data-modal="headphones">
+            <img src="images/headphones.png" alt="Headphones" class="item-image">
+            <div class="item-label">
+                <svg class="item-arrow" width="80" height="60" viewBox="-5 -5 80 60">
+                    <path d="M 60 45 Q 35 40, 15 20 T 8 5" />
+                </svg>
+                <span class="item-text">what i'm listening to</span>
+            </div>
         </div>
 
-        <div class="line" data-command="ls -la projects/">
-            <span class="prompt">$</span>
-            <span class="command"></span>
-            <div class="output">
+        <div class="desk-item notebook" data-modal="notebook">
+            <img src="images/notebook.png" alt="Notebook" class="item-image">
+            <div class="item-label">
+                <svg class="item-arrow" width="80" height="60" viewBox="-5 -5 80 60">
+                    <path d="M 8 5 Q 35 10, 55 30 T 62 45" />
+                </svg>
+                <span class="item-text">my thoughts</span>
+            </div>
+        </div>
+
+        <div class="desk-item jar" data-modal="jar">
+            <img src="images/cup.png" alt="Jar" class="item-image">
+            <div class="item-label">
+                <svg class="item-arrow" width="80" height="60" viewBox="-5 -5 80 60">
+                    <path d="M 62 5 Q 35 10, 15 30 T 8 45" />
+                </svg>
+                <span class="item-text">random facts</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dark overlay -->
+    <div class="overlay"></div>
+
+    <!-- Blob cursor -->
+    <div class="blob-cursor"></div>
+
+    <!-- Computer Modal -->
+    <div class="modal modal-computer" id="modal-computer">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <header class="modal-header">
+                <h1>Ben Zhang</h1>
+                <span class="age-display"><span id="age"></span> y/o</span>
+            </header>
+            <p class="modal-intro">upenn m&t '29. building and writing about whatever i think is cool. currently interested in ai, infra, and mcp.</p>
+
+            <section class="modal-section">
+                <h2>Projects</h2>
                 <ul class="project-list">
                     <li>
-                        <a href="https://github.com/bezh7/data-labeling-mvp">unnamed app</a>
-                        <span class="desc">half finished ai agent for data processing. side project</span>
+                        <a href="https://mcprank.app" target="_blank">mcp rank</a>
+                        <span>ranking and discovering mcp tools</span>
                     </li>
                     <li>
-                        <a href="https://github.com/bezh7/metadata-optimizer">chatgpt app invocation simulator</a>
-                        <span class="desc">script i made to test chatgpt app invocations. interested in expanding for mcp tool invcoation optimizing</span>
+                        <a href="https://github.com/bezh7/metadata-optimizer" target="_blank">chatgpt app invocation simulator</a>
+                        <span>testing how gpt apps get invoked</span>
                     </li>
                     <li>
-                        <a href="https://devpost.com/software/team-3-loople">loople</a>
-                        <span class="desc">resusable led bracelet for parties and concerts. m&tsi 24</span>
+                        <a href="https://xplorestaging.ieee.org/document/10881418" target="_blank">kam-research</a>
+                        <span>neural networks for knee monitoring</span>
                     </li>
                     <li>
-                        <a href="https://xplorestaging.ieee.org/document/10881418">kam-research</a>
-                        <span class="desc">knee adduction moment monitoring method using artificial neural networks</span>
+                        <a href="https://devpost.com/software/team-3-loople" target="_blank">loople</a>
+                        <span>reusable led bracelets · m&tsi '24</span>
                     </li>
                 </ul>
-            </div>
-        </div>
+                <a href="https://github.com/bezh7?tab=repositories" target="_blank" class="see-more">see more →</a>
+            </section>
 
-        <div class="line" data-command="cat links.txt">
-            <span class="prompt">$</span>
-            <span class="command"></span>
-            <div class="output link-list">
+            <section class="modal-section modal-links">
                 <a href="https://substack.com/@benzhnng?" target="_blank">substack</a>
                 <a href="https://www.linkedin.com/in/benjamin-zhang-248397292/" target="_blank">linkedin</a>
-            </div>
+                <a href="https://github.com/bezh7" target="_blank">github</a>
+            </section>
         </div>
-    </main>
+    </div>
+
+    <!-- Headphones Modal -->
+    <div class="modal modal-headphones" id="modal-headphones">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2>Currently Vibing To</h2>
+            <p class="modal-subtitle">something i've been listening to lately</p>
+            <div class="now-playing" id="now-playing">
+                <div class="now-playing-loading">Loading...</div>
+            </div>
+            <button class="shuffle-button" id="shuffle-track">next</button>
+            <a href="https://open.spotify.com/user/m2n4upuvctyfbfbw7vcggiv27" target="_blank" class="spotify-profile-link">view my spotify →</a>
+        </div>
+    </div>
+
+    <!-- Notebook Modal -->
+    <div class="modal modal-notebook" id="modal-notebook">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2>Thoughts & Writing</h2>
+            <p class="modal-subtitle">occasional ramblings about tech, building, and life</p>
+            <div class="writing-preview">
+                <p>I write about whatever's on my mind — usually something about AI, startups, or the intersection of tech and creativity.</p>
+            </div>
+            <a href="https://substack.com/@benzhnng?" target="_blank" class="cta-button">Read on Substack →</a>
+        </div>
+    </div>
+
+    <!-- Jar Modal (Fun Facts) -->
+    <div class="modal modal-jar" id="modal-jar">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2>Random Fact</h2>
+            <p class="fun-fact" id="fun-fact">Click to get a random fact about me!</p>
+            <button class="fact-button" id="next-fact">Another one →</button>
+        </div>
+    </div>
 
     <script src="js/scripts.js"></script>
 </body>
