@@ -21,13 +21,18 @@
             deskScene.classList.add('active');
             createDustParticles();
 
-            // On mobile, scroll to center of the image
+            // On mobile, scroll to center of the image after layout settles
             if (window.innerWidth <= 768) {
-                const scrollWidth = document.body.scrollWidth - window.innerWidth;
-                if (scrollWidth > 0) {
-                    document.body.scrollLeft = scrollWidth / 2;
-                    document.documentElement.scrollLeft = scrollWidth / 2;
-                }
+                setTimeout(() => {
+                    const scrollWidth = document.body.scrollWidth - window.innerWidth;
+                    if (scrollWidth > 0) {
+                        window.scrollTo({
+                            left: scrollWidth / 2,
+                            top: 0,
+                            behavior: 'instant'
+                        });
+                    }
+                }, 100);
             }
 
             // Enable interactions after entrance animations complete
