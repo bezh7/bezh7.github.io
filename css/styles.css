@@ -943,20 +943,21 @@ body.blob-active .now-playing a {
     body {
         align-items: flex-start;
         padding-top: 0;
-        overflow: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
 
     .desk-scene {
         max-width: none;
-        width: 180vw;
+        width: auto;
         height: 100vh;
         overflow: visible;
     }
 
     .desk-photo {
-        width: 180vw;
-        min-width: 180vw;
-        object-position: center;
+        width: auto;
+        height: 100vh;
+        object-fit: contain;
     }
 
     /* Modal close button - move to avoid overlap with age display */
@@ -1012,15 +1013,6 @@ body.blob-active .now-playing a {
 }
 
 @media (max-width: 480px) {
-    .desk-scene {
-        width: 220vw;
-    }
-
-    .desk-photo {
-        width: 220vw;
-        min-width: 220vw;
-    }
-
     .mini-site {
         font-size: 1.8vw;
     }
