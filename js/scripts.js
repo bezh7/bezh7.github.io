@@ -492,6 +492,25 @@
         }
     }
 
+    // Projects expand/collapse
+    const toggleProjectsBtn = document.getElementById('toggle-projects');
+    const projectsExpanded = document.getElementById('projects-expanded');
+
+    if (toggleProjectsBtn && projectsExpanded) {
+        toggleProjectsBtn.addEventListener('click', () => {
+            const isExpanded = projectsExpanded.classList.contains('expanded');
+            if (isExpanded) {
+                projectsExpanded.style.maxHeight = '0';
+                projectsExpanded.classList.remove('expanded');
+                toggleProjectsBtn.textContent = 'see more →';
+            } else {
+                projectsExpanded.style.maxHeight = projectsExpanded.scrollHeight + 'px';
+                projectsExpanded.classList.add('expanded');
+                toggleProjectsBtn.textContent = 'show less →';
+            }
+        });
+    }
+
     // Blob cursor
     const blob = document.querySelector('.blob-cursor');
 
@@ -528,7 +547,7 @@
         animateBlob();
 
         // Grow on hover over clickable elements
-        const clickables = document.querySelectorAll('.desk-item, .modal-close, .fact-button, .cta-button, .project-list a, .modal-links a, .landing-enter, .see-more, .shuffle-button, .spotify-profile-link, .now-playing a');
+        const clickables = document.querySelectorAll('.desk-item, .modal-close, .fact-button, .cta-button, .project-list a, .modal-links a, .landing-enter, .see-more, .shuffle-button, .spotify-profile-link, .now-playing a, #toggle-projects');
         clickables.forEach(el => {
             el.addEventListener('mouseenter', () => blob.classList.add('hover'));
             el.addEventListener('mouseleave', () => blob.classList.remove('hover'));

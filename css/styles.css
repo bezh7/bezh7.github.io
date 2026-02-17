@@ -713,6 +713,28 @@ body.blob-active .now-playing a {
     color: #6b5d4d;
 }
 
+.projects-expanded {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.projects-expanded .project-list {
+    margin-top: 0;
+}
+
+.projects-expanded .project-list li:first-child {
+    padding-top: 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.project-name {
+    color: var(--modal-text);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+}
+
 .see-more {
     display: inline-block;
     margin-top: 12px;
@@ -720,6 +742,11 @@ body.blob-active .now-playing a {
     color: #8b5a2b;
     text-decoration: none;
     transition: color 0.2s;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
 }
 
 .see-more:hover {
