@@ -167,6 +167,58 @@ body {
     border-top: 1px solid var(--border);
 }
 
+/* Rover project images and editable write-up */
+.project-figure {
+    margin: 0 0 36px;
+}
+
+.project-figure a {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.project-figure a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.project-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.project-figure figcaption {
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.project-writing {
+    margin-bottom: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.project-writing h2 {
+    margin-bottom: 12px;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+}
+
+.project-writing p {
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+.project-writing .writing-placeholder {
+    color: var(--text-muted);
+}
+
 /* Responsive */
 @media (max-width: 480px) {
     .page {
