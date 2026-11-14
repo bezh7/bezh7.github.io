@@ -79,7 +79,8 @@ body {
     margin-bottom: 24px;
 }
 
-.projects h2 {
+.projects h2,
+.build-log > h2 {
     font-family: 'Newsreader', Georgia, serif;
     font-size: 1.1rem;
     font-weight: 400;
@@ -153,6 +154,84 @@ body {
 
 .see-more:hover {
     color: var(--text);
+}
+
+/* Lunar construction rover build log */
+.back-link {
+    margin-bottom: 32px;
+}
+
+.project-label {
+    margin-bottom: 8px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.log-empty {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+}
+
+.log-entry {
+    padding: 24px 0 32px;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 24px;
+}
+
+.log-entry time {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.log-entry h3 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 8px 0 16px;
+}
+
+.log-entry h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.log-entry h3 a:hover {
+    color: var(--accent);
+}
+
+.log-content {
+    overflow-wrap: anywhere;
+}
+
+.log-content > * + * {
+    margin-top: 16px;
+}
+
+.log-content a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+}
+
+.log-content ul,
+.log-content ol {
+    padding-left: 24px;
+}
+
+.log-content img,
+.log-content video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.log-content figcaption {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
 }
 
 /* Responsive */
