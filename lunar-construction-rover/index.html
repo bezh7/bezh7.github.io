@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css?v=rover-list-1">
 </head>
 <body>
     <main class="page">
@@ -28,23 +28,61 @@
             <img src="../images/rover/rover-three-quarter.png" width="682" height="553"
                  alt="Three-quarter CAD view of the four-wheel rover, showing its chassis, drivetrain, battery, and electronics."
                  fetchpriority="high">
-            <figcaption>current prototype &middot; CAD assembly</figcaption>
+            <figcaption>v0 prototype (11/7/26) &middot; CAD assembly</figcaption>
         </figure>
 
         <section class="project-writing" aria-labelledby="about-build">
-            <h2 id="about-build">about the build</h2>
-            <!-- Replace the paragraph below with your write-up. Add more <p> elements
-                 for the project goals, design decisions, fabrication, and test results.
-                 Keep untested design targets separate from measured performance. -->
-            <p class="writing-placeholder">more on the design and build process coming soon.</p>
-        </section>
+            <p class="project-date"><time datetime="2026-11-07">November 7, 2026</time> &middot; Design notes</p>
+            <h2 id="about-build">V0 Locomotion Prototype</h2>
+            <p>The goal for v0 was a low-cost locomotion base that I could manufacture without access to precision machining equipment. The main focus was getting the drivetrain, chassis, and electronics into a buildable layout, with payload handling and manipulation left for a later version.</p>
 
-        <figure class="project-figure">
-            <img src="../images/rover/rover-top.png" width="534" height="433"
-                 alt="Top-down CAD view of the rover showing two motors, longitudinal driveshafts, four wheel gear housings, and the electronics layout."
-                 loading="lazy" decoding="async">
-            <figcaption>top view &middot; drivetrain and electronics layout</figcaption>
-        </figure>
+            <h3>What does v0 need to do?</h3>
+            <p>While lunar locomotion faces different gravity and terrain conditions than on Earth, the fundamental questions of large-scale payload transport remain the same:</p>
+            <ol class="design-questions">
+                <li>Can it move the load?</li>
+                <li>Can it control the load?</li>
+                <li>Can it keep doing both over uneven terrain?</li>
+            </ol>
+            <p>For a heavy lunar hauler, that means sustaining enough wheel torque to climb at a useful speed, steering through loose soil without digging in, and controlling speed on long descents. The wheels need to stay loaded enough to drive and brake over uneven ground, and the cargo needs to stay secure through turns, stops, and impacts.</p>
+            <p>For v0, I set a smaller set of targets. I wanted a 7–10 kg rover I could drive remotely across compact dirt and loose sand, with a 10° sand slope and a 4 cm rounded obstacle as the main mobility tests.</p>
+
+            <h3>V0's Design</h3>
+            <p><strong>To answer those three questions, the starting point is determining the torque needed at each wheel.</strong>  For a preliminary check I assumed a 10 kg loaded rover on Earth, 140 mm diameter wheels, a 10° incline, and all four wheels sharing the drive force equally.</p>
+            <figure class="torque-summary" aria-labelledby="torque-caption">
+                <table class="torque-table">
+                    <caption id="torque-caption">Torque budget <span>Per wheel driven · cumulative estimates</span></caption>
+                    <thead>
+                        <tr><th scope="col">Load allowance</th><th scope="col">Torque <span>(N·m)</span></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">Climbing the slope<span>At the wheel</span></th><td>0.30</td></tr>
+                        <tr><th scope="row">Including rolling resistance<span>At the wheel</span></th><td>0.47</td></tr>
+                        <tr><th scope="row">Including drivetrain losses<span>At the transmission input</span></th><td>0.58</td></tr>
+                        <tr class="torque-target"><th scope="row">With a 2× safety factor<span>Proposed input sizing target</span></th><td>1.17</td></tr>
+                    </tbody>
+                </table>
+                <p class="torque-note">Assumed rolling-resistance coefficient: 0.1. Transmission: 80% efficient, 1:1 gearing. Values use unrounded calculations.</p>
+            </figure>
+            <p><strong>Another notable early decision was to defer suspension until later versions.</strong> The main reason was manufacturing difficulty. I expected the linkages and rotating joints, particularly ball joints, to be difficult to print reliably. Buying those components and accommodating suspension movement in the drivetrain would add complexity and cost. I chose a rigid chassis for the initial prototype, with suspension remaining a high-priority improvement.</p>
+
+            <p>The first drivetrain layout I considered used four geared motors, one per wheel. Individual motors would eliminate the shafts connecting the front and rear wheels, but the biggest concern was cost. One solution was designing and printing my own gearboxes. However, that approach was quickly sidelined by their size and the difficulty of printing gears capable of carrying the required torque. Buying metal gears made the custom gearboxes even less cost-effective. Compact, low-cost gearboxes are worth revisiting in later iterations.</p>
+            <p>Reducing the number of motors to one or two seemed like the best way to cut costs while retaining 4WD. A single-motor design could use differentials to distribute power and Ackermann steering to turn. However, the differentials, steering linkage, and joints needed to drive the steered wheels added considerable manufacturing and assembly complexity. I chose a two-motor skid-steering setup, with one motor driving each side, to avoid those additional mechanisms.</p>
+
+            <figure class="project-figure layout-figure">
+                <img src="../images/rover/rover-top.png" width="534" height="433"
+                     alt="Top-down CAD view of the rover showing two motors, longitudinal driveshafts, four wheel gear housings, and the electronics layout."
+                     loading="lazy" decoding="async">
+                <figcaption>top view &middot; drivetrain and electronics layout</figcaption>
+            </figure>
+
+            <h3>Connecting the front and rear wheels</h3>
+            <p>The next question was how to connect the two wheels on each side. I considered a chain drive, but tensioning, enclosure size, and keeping sand out seemed more difficult to manage than aligning a longitudinal shaft and limiting its flex. I chose longitudinal driveshafts with bevel gears at the wheels.</p>
+
+            <h3>Final Design Review</h3>
+            <p>For an initial, low-cost prototype, this design seemed simple and effective. However, there are several mechanical concerns to address. Skid steering under load could cause the wheels to dig into loose soil. Lower-cost gearboxes would make it easier to explore individual wheel drives and more complex steering and suspension arrangements. Suspension remains a later improvement, while tipping stability needs to be checked during the current loaded slope and obstacle tests.</p>
+            <p>The thin PETG shafts are the first parts I would revisit. The set-screw connections between the shafts and gears are likely weak points, and shaft bending could disturb bevel-gear alignment. My preliminary torsion calculations also suggest limited torque capacity, so shaft twist and strength need physical testing.</p>
+            <p>The first tests will check shaft connections and twist, followed by loaded turning, slope climbing, and obstacle traversal. I’m also working on access to precision machining and metalworking equipment, along with funding for future iterations.</p>
+        </section>
     </main>
 </body>
 </html>
